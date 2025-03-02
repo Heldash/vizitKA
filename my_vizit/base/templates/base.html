@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Главная{% endblock title %}</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</head>
+<body>
+<nav>
+    <ul class="flex flex-row">
+        <li><a href="{% url "" %}"></a></li>
+        <li><a href="{% url "" %}"></a></li>
+        <li><a href="{% url "" %}"></a></li>
+        <li><a href="{% url "" %}"></a></li>
+    </ul>
+</nav>
+{% block content %}
+{% endblock content %}
+</body>
+</html>
