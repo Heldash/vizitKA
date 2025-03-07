@@ -15,17 +15,20 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-r6!5yivnv6+ltf&=pv)ex&0(*7%a=ud95ci1ot$mkdg)1^sa2s'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -37,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "base"
 ]
 
 MIDDLEWARE = [
@@ -69,18 +73,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'my_vizit.wsgi.application'
 
-
+AUTH_USER_MODEL = "base.UserVizit"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        "ENGINE": "django.db.backends.postgresql",
+        "HOST":os.environ.get("DB_HOST","localhost"),
+        "USER":os.environ.get("DB_USER","postges"),
+        "PASSWORD":os.environ.get("DB_PASSWORD","pass"),
+        "NAME":os.environ.get("DB_NAME","app"),
+        "PORT":os.environ.get("DB_PORT",5432),
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 

@@ -5,16 +5,37 @@
     <title>{% block title %}Главная{% endblock title %}</title>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 </head>
-<body>
-<nav>
-    <ul class="flex flex-row">
-        <li><a href="{% url "" %}"></a></li>
-        <li><a href="{% url "" %}"></a></li>
-        <li><a href="{% url "" %}"></a></li>
-        <li><a href="{% url "" %}"></a></li>
+{% comment %} <h1 class="bg-[#f0ead2] bg-[#dde5b6] bg-[#adc178] bg-[#a98467] bg-[#6c584c]"></h1> {% endcomment %}
+<body class="h-screen bg-[#adc178]">
+<nav class="flex justify-center bg-[#dde5b6] h-max">
+    <ul class="flex flex-row border-l-2 m-3 border-l-[#6c584c] border-r-[#6c584c] h-max">
+        {% if id %}
+        <li><a href="{% url "home" %}?id={{id}}" class="border-r-2 p-2 border-r-[#6c584c]
+             bg-[#dde5b6] hover:bg-[#adc178] transition hover:scale-110">Обо мне</a></li>
+        {% else %}
+        <li><a href="{% url "home" %}" class="border-r-2 p-2 border-r-[#6c584c] bg-[#dde5b6] hover:bg-[#adc178] 
+            transition hover:scale-110">Обо мне</a></li>
+        {% endif %}
+        {% if id %}
+        {% for categ in categories %}
+            <li><a class="border-r-2 p-2 bg-[#dde5b6] hover:bg-[#adc178] transition hover:scale-110" href="{% url "category_url" %}?categ={{categ.id}}&id={{id}}">{{categ.name}}</a></li>
+        {% empty %}
+
+        {% endfor %}
+        {% else %}
+        {% for categ in categories %}
+            <li><a href="{% url "category_url" %}?categ={{categ.id}}" class="bg-[#66D2CE] hover:bg-[#2DAA9E] 
+                transition hover:scale-110 border-r-2 p-2">{{categ.name}}</a></li>
+        {% empty %}
+
+        {% endfor %}
+        {% endif %}
+        <li><a href="{% url "about_site" %}" class="bg-[#dde5b6] hover:bg-[#adc178] transition hover:scale-110">О сайте</a></li>
     </ul>
 </nav>
+<div class="flex h-full w-screen justify-center">
 {% block content %}
 {% endblock content %}
+</div>
 </body>
 </html>

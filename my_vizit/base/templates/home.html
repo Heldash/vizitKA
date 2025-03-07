@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% comment %} <h1 class="bg-[#f0ead2] bg-[#dde5b6] bg-[#adc178] bg-[#a98467] bg-[#6c584c]"></h1> {% endcomment %}
+    <div class="place-self-center h-5/6 w-3/4 bg-[#dde5b6] p-3 rounded-t-xl 
+    border-solid border-[#6c584c] border-2">
+        {% if not user_home.avatar %}
+        <img src="{% static "no_avatar.jpg" %}" alt="Avatar" class="float-left h-auto w-2/5 clear-right rounded-md">
+        {% else %}
+        <img src="user_home.avatar" alt="Avatar" class="float-left h-auto w-2/5 mt-3 ml-3 clear-right">
+        {% endif %}
+        <p class="text-lg font-bold pl-10">{{user_home.first_name}} GG wp{{user_home.last_name}}</p>
+        <p class="text-center">Специальность</p>
+        
+    </div>
+{% endblock content %}
