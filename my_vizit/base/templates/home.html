@@ -2,15 +2,25 @@
 {% load static %}
 {% block content %}
 {% comment %} <h1 class="bg-[#f0ead2] bg-[#dde5b6] bg-[#adc178] bg-[#a98467] bg-[#6c584c]"></h1> {% endcomment %}
-    <div class="place-self-center h-5/6 w-3/4 bg-[#dde5b6] p-3 rounded-t-xl 
+    <div class="place-self-center h-auto w-3/4 bg-[#dde5b6] p-3 rounded-xl 
     border-solid border-[#6c584c] border-2">
         {% if not user_home.avatar %}
-        <img src="{% static "no_avatar.jpg" %}" alt="Avatar" class="float-left h-auto w-2/5 clear-right rounded-md">
+        <img src="{% static "no_avatar.jpg" %}" alt="Avatar" class="sm:float-left justify-center h-[400px] aspect-square  object-cover rounded-full clear-right  border-[#6c584c] mr-4">
         {% else %}
-        <img src="user_home.avatar" alt="Avatar" class="float-left h-auto w-2/5 mt-3 ml-3 clear-right">
+        <img src="{{ user_home.avatar.url }}" alt="Avatar" class="place-self-center sm:float-left h-[200px] md:h-[300px] lg:h-[400px] aspect-square 
+        object-cover rounded-full mt-3 ml-3 clear-right  border-[#6c584c] mr-4">
         {% endif %}
-        <p class="text-lg font-bold pl-10">{{user_home.first_name}} GG wp{{user_home.last_name}}</p>
-        <p class="text-center">Специальность</p>
-        
+        <div class="pl-0 md:pl-10s">
+        <p class="text-2xl text-center font-bold">{{user_home.first_name}} {{user_home.last_name}}</p>
+        <hr class="rounded border-2 border-[#6c584c]">
+        <p class="text-2xl font-bold text-center">{{user_home.job}} программист</p>
+        {% comment %} <p class="font-bold font-serif">{{user_home.job}}</p> {% endcomment %}
+        <p class="text-left font-bold text-xl mb-1">Мой стек</p>
+        <div class>
+        {% for stack in stacks %}
+        <div class="border-2 border-[#6c584c] rounded-2xl px-1 py-1 select-none transition hover:scale-105 w-auto inline-block mb-1 font-bold font-serif">{{stack.stack_id.name}}</div>
+        {% endfor %}
+        </div>
+    </div>
     </div>
 {% endblock content %}

@@ -1,38 +1,44 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Главная{% endblock title %}</title>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style>
+        .bg_my{
+            background: ;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
-{% comment %} <h1 class="bg-[#f0ead2] bg-[#dde5b6] bg-[#adc178] bg-[#a98467] bg-[#6c584c]"></h1> {% endcomment %}
-<body class="h-screen bg-[#adc178]">
+{% comment %} <h1 class="bg-[#f0ead2] bg-[#dde5b6] bg-[#adc178] bg-[#a98467] bg-[#6c584c]"></h1> bg-[url({% static 'abstract.jpg' %})]{% endcomment %}
+<body class="h-screen bg-linear-to-t/longer fro to-cyan-600">
 <nav class="flex justify-center bg-[#dde5b6] h-max">
-    <ul class="flex flex-row border-l-2 m-3 border-l-[#6c584c] border-r-[#6c584c] h-max">
+    <ul class="flex flex-row h-max border-x-3 border-x-[#6c584c] text-lg divide-x-3 divide-solid divide-[#6c584c]">
         {% if id %}
-        <li><a href="{% url "home" %}?id={{id}}" class="border-r-2 p-2 border-r-[#6c584c]
-             bg-[#dde5b6] hover:bg-[#adc178] transition hover:scale-110">Обо мне</a></li>
+        <a href="{% url "home" %}?id={{id}}" class="  
+             bg-[#dde5b6] hover:bg-[#adc178] transition hover:scale-y-1 border-x-3 border-x-[#6c584c]"><li>Обо мне</li></a>
         {% else %}
-        <li><a href="{% url "home" %}" class="border-r-2 p-2 border-r-[#6c584c] bg-[#dde5b6] hover:bg-[#adc178] 
-            transition hover:scale-110">Обо мне</a></li>
+        <a href="{% url "home" %}" class=" border-r-[#6c584c] bg-[#dde5b6] hover:bg-[#adc178] 
+            transition hover:scale-105"><li>Обо мне</li></a>
         {% endif %}
         {% if id %}
         {% for categ in categories %}
-            <li><a class="border-r-2 p-2 bg-[#dde5b6] hover:bg-[#adc178] transition hover:scale-110" href="{% url "category_url" %}?categ={{categ.id}}&id={{id}}">{{categ.name}}</a></li>
+        <a class=" bg-[#dde5b6] hover:bg-[#adc178] transition hover:scale-105" href="{% url "category_url" %}?categ={{categ.id}}&id={{id}}"><li>{{categ.name}}</li></a>
         {% empty %}
-
         {% endfor %}
         {% else %}
         {% for categ in categories %}
-            <li><a href="{% url "category_url" %}?categ={{categ.id}}" class="bg-[#66D2CE] hover:bg-[#2DAA9E] 
-                transition hover:scale-110 border-r-2 p-2">{{categ.name}}</a></li>
+        <a href="{% url "category_url" %}?categ={{categ.id}}" class="bg-[#66D2CE] hover:bg-[#2DAA9E] 
+        transition hover:scale-105 "><li>{{categ.name}}</li></a>
         {% empty %}
-
         {% endfor %}
         {% endif %}
-        <li><a href="{% url "about_site" %}" class="bg-[#dde5b6] hover:bg-[#adc178] transition hover:scale-110">О сайте</a></li>
+        <a href="{% url "about_site" %}" class="bg-[#dde5b6] hover:bg-[#adc178] transition hover:scale-105"><li>О сайте</li></a>
     </ul>
 </nav>
+<input type="text" class="bg-white border-3 rounded-[8px] p-[5px]">
 <div class="flex h-full w-screen justify-center">
 {% block content %}
 {% endblock content %}

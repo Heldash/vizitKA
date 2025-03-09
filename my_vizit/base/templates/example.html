@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Визитка Программиста</title>
+    <style>
+        /* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Навигационное меню */
+.navbar {
+    background-color: #222;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.logo {
+    font-size: 24px;
+    text-decoration: none;
+    color: white;
+}
+
+.menu {
+    list-style-type: none;
+    display: flex;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: white;
+    margin-left: 20px;
+    transition: color 0.3s ease;
+}
+
+.menu li a:hover {
+    color: #00bcd4;
+}
+
+/* Секция приветствия */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #00bcd4;
+    color: white;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 12px 24px;
+    background-color: white;
+    color: #00bcd4;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #eaeaea;
+}
+
+/* Секции с информацией */
+.about,
+.skills,
+.projects,
+.contact {
+    padding: 40px 0;
+}
+
+.profile-picture {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.skill-list {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    display: inline-block;
+    width: 300px;
+    vertical-align: top;
+    margin-right: 20px;
+    margin-bottom: 30px;
+}
+
+.project-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+/* Форма обратной связи */
+form input,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #008ba3;
+}
+
+/* Футер */
+.footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+    </style>
+</head>
+<body>
+    <!-- Навигационное меню -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Ваше Имя</a>
+            <ul class="menu">
+                <li><a href="#about">Обо мне</a></li>
+                <li><a href="#skills">Навыки</a></li>
+                <li><a href="#projects">Проекты</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Секция приветствия -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <h1>Привет! Я программист.</h1>
+            <p>Разрабатываю веб-приложения и мобильные приложения.</p>
+            <button class="btn">Подробнее обо мне</button>
+        </div>
+    </section>
+    
+    <!-- Обо мне -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Обо мне</h2>
+            <img src="images/profile.jpg" alt="Profile Picture" class="profile-picture">
+            <p>Меня зовут Иван Иванов, и я занимаюсь разработкой уже более 5 лет. За это время я успел поработать над множеством интересных проектов, включая веб-приложения, мобильные приложения и системы автоматизации.</p>
+        </div>
+    </section>
+    
+    <!-- Навыки -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>Мои навыки</h2>
+            <ul class="skill-list">
+                <li>HTML / CSS</li>
+                <li>JavaScript</li>
+                <li>Python</li>
+                <li>React.js</li>
+                <li>Node.js</li>
+                <li>Git</li>
+            </ul>
+        </div>
+    </section>
+    
+    <!-- Проекты -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Мои проекты</h2>
+            <div class="project-card">
+                <img src="images/project1.png" alt="Project 1" class="project-image">
+                <h3>Проект 1</h3>
+                <p>Описание проекта...</p>
+            </div>
+            <div class="project-card">
+                <img src="images/project2.png" alt="Project 2" class="project-image">
+                <h3>Проект 2</h3>
+                <p>Описание проекта...</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Контактная информация -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Свяжитесь со мной</h2>
+            <form action="#" method="post">
+                <input type="text" placeholder="Имя" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Сообщение"></textarea>
+                <button type="submit" class="btn">Отправить</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2023 Ваше Имя. Все права защищены.</p>
+        </div>
+    </footer>
+    
+    <!-- Скрипты -->
+    <script src="scripts.js"></script>
+</body>
+</html>

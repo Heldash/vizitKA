@@ -3,10 +3,10 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 class UserVizit(AbstractUser):
-    about = models.TextField()
-    avatar = models.ImageField(storage="/images/avatars")
+    about = models.TextField(blank=True,null=True)
+    avatar = models.ImageField(upload_to="images/avatars",blank=True,null=True)
     job = models.CharField(max_length=64,null=True,blank=True)
-    name = models.CharField(max_length=120)
+    name = models.CharField(max_length=120, blank=True,null=True)
     def __str__(self):
         return self.username
 
@@ -30,17 +30,19 @@ class Post(models.Model):
     text = models.TextField()
     author = models.ForeignKey(UserVizit, on_delete=models.CASCADE)
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
-    preview_image=models.ImageField(storage="/images/preview")
+    preview_image=models.ImageField(upload_to="images/preview")
     def __str__(self):
         return self.title
 
 class ImagesPost(models.Model):
     post_id = models.ForeignKey(Post,on_delete=models.CASCADE)
-    image = models.ImageField(storage="/images/images_post")
+    image = models.ImageField(upload_to="images/images_post")
+
+
 
 class Icon(models.Model):
     name=models.CharField(max_length=60)
-    image = models.ImageField(storage="/images/icons")
+    image = models.ImageField(upload_to="images/icons")
 
 class LinksAcc(models.Model):
     user_id = models.ForeignKey(UserVizit,on_delete=models.CASCADE)
