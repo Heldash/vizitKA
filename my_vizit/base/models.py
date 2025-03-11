@@ -29,8 +29,10 @@ class Post(models.Model):
     title = models.CharField(max_length=120)
     text = models.TextField()
     author = models.ForeignKey(UserVizit, on_delete=models.CASCADE)
-    category = models.ForeignKey(Category,on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     preview_image=models.ImageField(upload_to="images/preview")
+    date_post = models.DateField(auto_now=True,null=True,blank=True)
+    is_posted = models.BooleanField(default=False)
     def __str__(self):
         return self.title
 
