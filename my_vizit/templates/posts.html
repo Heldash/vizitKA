@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- Card Blog -->
+<div class="mt-20 mx-10">
+<div><h1 class="mb-4 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Мои проекты</h1></div>
+<hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded-sm md:my-10 dark:bg-gray-700">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 mt-10 mx-5 gap-4">
+    {% for post in posts %}
+
+    <article
+  class="overflow-clip rounded-lg shadow-sm transition hover:shadow-lg dark:shadow-gray-700/25">
+  <img
+    alt=""
+    src="{{ post.preview_image.url }}"
+    class="h-56 w-full object-cover"
+  />
+
+  <div class="bg-white p-4 sm:p-6 dark:bg-gray-900">
+    <time datetime="{{ post.date_post }}" class="block text-xs text-gray-500 dark:text-gray-400">
+        {{post.date_post}}
+    </time>
+
+    <a href="{% url "projects" %}?id={{post.id}}">
+      <h3 class="mt-0.5 text-lg text-gray-900 dark:text-white">
+        {{post.title}}
+      </h3>
+    </a>
+
+    <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500 dark:text-gray-400">
+      {{post.text}}
+    </p>
+  </div>
+</article>
+{% endfor %}
+</div>
+</div>
+{% endblock content %}
+
