@@ -15,24 +15,27 @@ def home_views(request:HttpRequest):
             user_home = models.UserVizit.objects.get(id = request.GET.get("id",-1))
             stacks = models.StackUserRelate.all().filter(user_id=user_home)
         except:
-            return HttpResponse("404, такого пользователя не существует")
+            render(request,"404page.html",context={"error_text":"Данный пользователь не найден"})
         return render(request, "home.html", context={"user_home": user_home,"categories":categoryes,"stacks":stacks})
 def about_view(request:HttpRequest):
-    print(request.user.first_name)
     try:
         user = models.UserVizit.objects.get(is_superuser=True)
-    except:
-        return HttpResponse("404 соси")
-    return render(request,"posts.html",context={"user":user})
+        staks = models.StackUserRelate.objects.all().filter(user_id=user)
+        links = models.LinksAcc.objects.all().filter(user_id=user)
+        # for i in staks:
+        #     print(staks)
+    except Exception as ex:
+        return HttpResponse(ex)
+    return render(request,"about.html",
+                  context={"user":user,"stacks":staks,"links":links})
 def posts_view(request:HttpRequest):
-    print(request.user.first_name)
     id = request.GET.get("id",-1)
     if id == -1:
         try:
             user = models.UserVizit.objects.get(is_superuser=True)
             posts = models.Post.objects.all().filter(author=user,is_posted=True)
         except:
-            return HttpResponse("404 соси")
+            return render(request,"404page.html",context={"error_text":"Пост не найден"})
         return render(request, "posts.html", context={"user": user, "posts": posts})
     else:
         try:
@@ -40,5 +43,11 @@ def posts_view(request:HttpRequest):
             post = models.Post.objects.get(id=id,is_posted=True)
             images = models.ImagesPost.objects.all().filter(post_id=post)
         except:
-            return HttpResponse("404 соси")
+            return render(request,"404page.html",context={"error_text":"Пост не найден"})
         return render(request, "post_page.html", context={"post": post,"images_post":images})
+
+def login_user(request:HttpRequest):
+    if request.method=="POST":
+        pass
+def user_edit(request:HttpRequest):
+    pass

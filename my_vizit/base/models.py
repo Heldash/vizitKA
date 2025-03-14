@@ -49,4 +49,4 @@ class Icon(models.Model):
 class LinksAcc(models.Model):
     user_id = models.ForeignKey(UserVizit,on_delete=models.CASCADE)
     link = models.CharField(max_length=120)
-    icon = models.ForeignKey(Icon,on_delete=models.SET_NULL, null=True, blank=True)
+    name = models.CharField(max_length=64,default="No name")

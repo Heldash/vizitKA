@@ -5,15 +5,15 @@
     <h2 class="text-4xl text-center 
     font-extrabold dark:text-white">{{ post.title}}</h2>
     {% if images_post %}
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 mx-5 gap-4">
+    <div class="flex flex-row flex-wrap justify-center gap-2 h-min mt-2">
         {% for image in images_post %}
-        <div class="overflow-clip object-cover aspect-auto rounded-lg ">
-            <img src="{{image.image.url}}" class="object-contain">
+        <div class="overflow-hidden h-80 rounded-lg ">
+            <img src="{{ image.image.url }}" class="h-80 object-cover">
         </div>
         {% endfor %}
       </div>
     {% endif %}
     <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded-sm md:my-10 dark:bg-gray-700">
-    <p class="my-4 text-lg text-gray-500">{{post.text | linebreaksbr}}</p>
+    <p class="mt-2 mx-4 text-lg text-gray-500">{{post.text | linebreaksbr}}</p>
 </div>
 {% endblock content %}
