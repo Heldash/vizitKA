@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="grid h-screen place-content-center px-4">
+    <div class="text-center">
+        <img src="{% static "404girl.png" %}" alt="" class="max-h-[300px]">
+      <h1 class="mt-6 text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-400 sm:text-4xl">404</h1>
+      <p class="mt-4 text-gray-500 dark:text-gray-200">Данная страница не найдена</p>
+    </div>
+  </div>
+{% endblock content %}

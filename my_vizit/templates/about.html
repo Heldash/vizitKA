@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="content-center w-full mt-20 mx-10 ">
+<section >
+    <div class="flex flex-row flex-wrap w-full justify-center">
+        <div class="font-light basis-1/2 self-center text-gray-500 sm:text-lg dark:text-gray-400 md:mr-6">
+            
+              <h2 class="mb-4 flex flex-row text-2xl tracking-tight font-extrabold 
+              text-gray-900 dark:text-white">
+              <svg class="w-8 h-8 text-gray-800 dark:text-white self-center" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z" clip-rule="evenodd"/>
+              </svg>
+              Обо мне</h2>
+              <p class="text-xl mb-4 text-gray-900 dark:text-white">{{user.about}}</p>
+            {% comment %} <p class="mb-4">{{user.about}}</p> {% endcomment %}
+            <h2 class="mb-4 flex flex-row text-2xl tracking-tight font-extrabold 
+              text-gray-900 dark:text-white">
+              <svg class="w-8 h-8 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17 20v-5h2v6.988H3V15h1.98v5H17Z"/>
+                <path d="m6.84 14.522 8.73 1.825.369-1.755-8.73-1.825-.369 1.755Zm1.155-4.323 8.083 3.764.739-1.617-8.083-3.787-.739 1.64Zm3.372-5.481L10.235 6.08l6.859 5.704 1.132-1.362-6.859-5.704ZM15.57 17H6.655v2h8.915v-2ZM12.861 3.111l6.193 6.415 1.414-1.415-6.43-6.177-1.177 1.177Z"/>
+              </svg>
+              Мой стек</h2>
+              <div class="flex flex-row flex-wrap gap-2 mb-3">
+              {% for stack in stacks %}
+              <span class="bg-gray-100 inline-block hover:scale-105 hover:translate-x-0.5 transition select-none text-gray-800 text-xl font-medium px-2.5 py-0.5 
+              rounded-full dark:bg-gray-700
+              hover:bg-blue-100 hover:text-blue-800 dark:text-gray-300">{{ stack.stack_id.name |capfirst}}</span>
+              {% endfor %}
+            </div>
+              <h2 class="mb-4 flex flex-row text-2xl tracking-tight font-extrabold 
+              text-gray-900 dark:text-white">
+              <svg class="w-[26px] h-[26px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.213 9.787a3.391 3.391 0 0 0-4.795 0l-3.425 3.426a3.39 3.39 0 0 0 4.795 4.794l.321-.304m-.321-4.49a3.39 3.39 0 0 0 4.795 0l3.424-3.426a3.39 3.39 0 0 0-4.794-4.795l-1.028.961"/>
+              </svg>              
+              Контакты и ссылки</h2>
+              {% for link in links %}
+              <a class="bg-gray-100 hover:scale-105 transition
+              inline-flex items-center 
+               hover:text-blue-400 text-gray-800 text-xs hover:border-blue-400
+                font-medium me-2 px-2.5 py-0.5 rounded-sm 
+                dark:bg-gray-700 dark:text-gray-200 border 
+                cursor-pointer 
+                border-gray-300" target="_blank" href="{{link.link}}">
+                <svg class="w-6 h-6 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778"/>
+                </svg>
+                {{link.name | capfirst}}</a>
+                {% endfor %}
+    
+        </div>
+        <div class="basis1/2 center self-center object-center">
+            <img class="max-h-[400px]" src="{% static "girl_programming.png" %}" alt="office content 1">
+        </div>
+    </div>
+</section>
+</div>
+{% endblock content %}
